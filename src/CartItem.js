@@ -26,6 +26,21 @@ class CartItem extends React.Component {
         });
     }
 
+    decreaseQuantity = () => {
+        const { qty } = this.state;
+
+        if (qty === 0) {
+            return;
+        }
+
+        // setState form 2nd
+        this.setState( (prevState) => {
+            return {
+                qty : prevState.qty - 1
+            }
+        });
+    }
+
     render () {
         // object distructuring
         const {price,title,qty} = this.state;  
@@ -49,7 +64,8 @@ class CartItem extends React.Component {
                         <img 
                             alt="decrease" 
                             className="action-icons" 
-                            src="https://cdn-icons-png.flaticon.com/512/992/992683.png" 
+                            src="https://cdn-icons-png.flaticon.com/512/992/992683.png"
+                            onClick={this.decreaseQuantity} 
                         />
                         <img 
                             alt="delete" 
